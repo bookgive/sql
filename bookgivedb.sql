@@ -68,6 +68,8 @@ CREATE TABLE personal_comment (
 
 
 #데이터 삽입
-insert into personal_donation(userID,title,content,donation_state) values('id1','title1','content1',true);
+insert into personal_donation(userID,title,content,donation_state) values('id1','개인기부합니다~~!','content1',true);
+insert into institution_donation(userID,title,content,donation_state) values('id2','기관기부합니다~~!','content1',true);
+insert into intro(studentID, name, department, school) values('20191003','김민재','정보시스템공학과','성신여자대학교');
 
 select * from personal_donation
