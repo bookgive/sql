@@ -13,6 +13,20 @@ CREATE TABLE intro (
      department VARCHAR(30) NULL,
      school VARCHAR(30) NULL
      );
+     
+#회원가입 테이블 생성     
+CREATE TABLE userdb (
+   userID VARCHAR(20) NOT NULL,
+   name VARCHAR(20) NOT NULL,
+   pwd VARCHAR(20) NOT NULL,
+   phone VARCHAR(20) NOT NULL,
+   address VARCHAR(50) NOT NULL,
+   email VARCHAR(50) NOT NULL,
+   role VARCHAR(20) NOT NULL,
+   description LONGTEXT NULL,
+   PRIMARY KEY (userID)
+);     
+     
 #기관 기부 게시판 테이블 생성
 CREATE TABLE institution_donation (
      institution_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -26,8 +40,8 @@ CREATE TABLE institution_donation (
      donation_state BOOLEAN NULL,
      book_status VARCHAR(20) NULL
      );
+     
 #개인 기부 게시판 테이블 생성
-#개인기부 댓글 게시판 생성
 CREATE TABLE personal_donation (
 	personal_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	userID VARCHAR(20) NULL,
@@ -39,6 +53,19 @@ CREATE TABLE personal_donation (
 	book_status VARCHAR(10) NULL
 	#,FOREIGN KEY (userID) REFERENCES User(userID)
 );
+
+#개인기부 댓글 게시판 생성
+CREATE TABLE personal_comment (
+	comment_ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	personal_donation_ID INT(11) NOT NULL,
+	userID VARCHAR(20) NOT NULL,
+	created_at DATE NOT NULL,
+	modified_at DATE NOT NULL,
+	PRIMARY KEY (comment_ID),
+	CONSTRAINT personal_comment FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
+);
+
+
 
 #데이터 삽입
 insert into personal_donation(userID,title,content,donation_state) values('id1','title1','content1',true);
