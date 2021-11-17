@@ -47,7 +47,7 @@ CREATE TABLE personal_donation (
 	userID VARCHAR(20) NULL,
 	title VARCHAR(50) NULL,
 	content LONGTEXT NULL,
-	create_at DATE NULL,
+	created_at DATE NULL,
 	modified_at DATE NULL,
 	donation_state BOOLEAN NULL,
 	book_status VARCHAR(10) NULL
