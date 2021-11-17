@@ -23,7 +23,7 @@ CREATE TABLE institution_donation (
      created_at DATE NULL,
      modified_at DATE NULL, 
      institution VARCHAR(50) NULL,
-     donation_state VARCHAR(50) NULL,
+     donation_state BOOLEAN NULL,
      book_status VARCHAR(20) NULL
      );
 #개인 기부 게시판 테이블 생성
