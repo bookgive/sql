@@ -7,7 +7,25 @@ collate utf8_general_ci;
 use bookgivedb;
 #사용자 테이블 생성
 #팀원소개 테이블 생성
+CREATE TABLE intro (
+    -> studentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(30) NULL,
+    -> department VARCHAR(30) NULL,
+    -> school VARCHAR(30) NULL
+    -> );
 #기관 기부 게시판 테이블 생성
+CREATE TABLE institution_donation (
+    -> institution_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> userID VARCHAR(20) NULL,
+    -> title VARCHAR(50) NULL, 
+    -> content LONGTEXT NULL,
+    -> img LONGTEXT NULL,
+    -> created_at DATE NULL,
+    -> modified_at DATE NULL, 
+    -> institution VARCHAR(50) NULL,
+    -> donation_state VARCHAR(50) NULL,
+    -> book_status VARCHAR(20) NULL
+    -> );
 #개인 기부 게시판 테이블 생성
 #개인기부 댓글 게시판 생성
 CREATE TABLE personal_donation (
