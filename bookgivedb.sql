@@ -62,7 +62,7 @@ CREATE TABLE personal_comment (
 	created_at DATE NOT NULL,
 	modified_at DATE NOT NULL,
 	PRIMARY KEY (comment_ID),
-	CONSTRAINT personal_comment FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
+	CONSTRAINT personal_comment FOREIGN KEY (userID) REFERENCES userdb (userID)
 );
 
 
