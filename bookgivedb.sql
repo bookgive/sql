@@ -5,16 +5,8 @@ create database bookgivedb
 collate utf8_general_ci;
 #데이터베이스 사용
 use bookgivedb;
+
 #사용자 테이블 생성
-#팀원소개 테이블 생성
-CREATE TABLE intro (
-     studentID INT NOT NULL PRIMARY KEY,
-     name VARCHAR(30) NULL,
-     department VARCHAR(30) NULL,
-     school VARCHAR(30) NULL
-     );
-     
-#회원가입 테이블 생성     
 CREATE TABLE userdb (
    userID VARCHAR(20) NOT NULL,
    name VARCHAR(20) NOT NULL,
@@ -25,7 +17,15 @@ CREATE TABLE userdb (
    role VARCHAR(20) NOT NULL,
    description LONGTEXT NULL,
    PRIMARY KEY (userID)
-);     
+);  
+
+#팀원소개 테이블 생성
+CREATE TABLE intro (
+     studentID INT NOT NULL PRIMARY KEY,
+     name VARCHAR(30) NULL,
+     department VARCHAR(30) NULL,
+     school VARCHAR(30) NULL
+     );
      
 #기관 기부 게시판 테이블 생성
 CREATE TABLE institution_donation (
