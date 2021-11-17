@@ -8,7 +8,7 @@ use bookgivedb;
 #사용자 테이블 생성
 #팀원소개 테이블 생성
 CREATE TABLE intro (
-    -> studentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -> studentID INT NOT NULL PRIMARY KEY,
     -> name VARCHAR(30) NULL,
     -> department VARCHAR(30) NULL,
     -> school VARCHAR(30) NULL
