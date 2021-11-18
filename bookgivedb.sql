@@ -39,7 +39,7 @@ CREATE TABLE institution_donation (
      donation_state BOOLEAN NULL,
      book_status VARCHAR(20) NULL,
      FOREIGN KEY (userID) REFERENCES userdb(userID),
-     INDEX userID (userID),
+     INDEX userID (userID)
      );
  
 #개인 기부 게시판 테이블 생성
