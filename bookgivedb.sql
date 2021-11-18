@@ -6,112 +6,17 @@ collate utf8_general_ci;
 #데이터베이스 사용
 use bookgivedb;
 
-
-#사용자 테이블 생성
-CREATE TABLE `userdb` (
-   `userID` VARCHAR(20) NOT NULL,
-   `name` VARCHAR(20) NULL DEFAULT NULL,
-   `pwd` VARCHAR(20) NULL DEFAULT NULL,
-   `phone` VARCHAR(20) NULL DEFAULT NULL,
-   `address` VARCHAR(50) NULL DEFAULT NULL,
-   `email` VARCHAR(50) NULL DEFAULT NULL,
-   `role` VARCHAR(20) NULL DEFAULT NULL,
-   `description` LONGTEXT NULL,
-   PRIMARY KEY (`userID`)
-)
-
-ENGINE=InnoDB
-;
-
-
-CREATE TABLE `personal_donation` (
-   `personal_donation_id` INT(11) NOT NULL AUTO_INCREMENT,
-   `userID` VARCHAR(20) NULL DEFAULT NULL,
-   `title` VARCHAR(50) NULL DEFAULT NULL,
-   `content` LONGTEXT NULL,
-   `created_at` DATE NULL DEFAULT NULL,
-   `modified_at` DATE NULL DEFAULT NULL,
-   `donation_state` TINYINT(1) NULL DEFAULT NULL,
-   `book_status` VARCHAR(10) NULL DEFAULT NULL,
-   PRIMARY KEY (`personal_donation_id`),
-   INDEX `userID` (`userID`),
-   CONSTRAINT `personal_donation_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
-)
-
-ENGINE=InnoDB
-AUTO_INCREMENT=2
-;
-
-
-#개인기부 댓글 게시판 생성
-CREATE TABLE `personal_comment` (
-   `comment_ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-   `personal_donation_ID` INT(11) NULL DEFAULT NULL,
-   `userID` VARCHAR(20) NULL DEFAULT NULL,
-   `created_at` DATE NULL DEFAULT NULL,
-   `modified_at` DATE NULL DEFAULT NULL,
-   PRIMARY KEY (`comment_ID`),
-   INDEX `personal_comment` (`userID`),
-   INDEX `personal_donation_ID` (`personal_donation_ID`),
-   CONSTRAINT `personal_comment` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`),
-   CONSTRAINT `personal_comment_ibfk_1` FOREIGN KEY (`personal_donation_ID`) REFERENCES `personal_donation` (`personal_donation_id`)
-)
-
-ENGINE=InnoDB
-;
-
-#기관 기부 게시판 테이블 생성
-CREATE TABLE `institution_donation` (
-   `institution_donation_id` INT(11) NOT NULL AUTO_INCREMENT,
-   `userID` VARCHAR(20) NULL DEFAULT NULL,
-   `title` VARCHAR(50) NULL DEFAULT NULL,
-   `content` LONGTEXT NULL,
-   `img` LONGTEXT NULL,
-   `created_at` DATE NULL DEFAULT NULL,
-   `modified_at` DATE NULL DEFAULT NULL,
-   `institution` VARCHAR(50) NULL DEFAULT NULL,
-   `donation_state` TINYINT(1) NULL DEFAULT NULL,
-   `book_status` VARCHAR(20) NULL DEFAULT NULL,
-   PRIMARY KEY (`institution_donation_id`),
-   INDEX `userID` (`userID`),
-   CONSTRAINT `institution_donation_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
-)
-
-ENGINE=InnoDB
-AUTO_INCREMENT=2
-;
-
-#팀원소개 테이블 생성
-CREATE TABLE `intro` (
-   `studentID` INT(11) NOT NULL,
-   `name` VARCHAR(30) NULL DEFAULT NULL,
-   `department` VARCHAR(30) NULL DEFAULT NULL,
-   `school` VARCHAR(30) NULL DEFAULT NULL,
-   PRIMARY KEY (`studentID`)
-)
-
-ENGINE=InnoDB
-;
-
-
-
-
-# 수정 전  
-
-
-
 #사용자 테이블 생성
 CREATE TABLE userdb (
-   userID VARCHAR(20) NOT NULL,
-   name VARCHAR(20) NOT NULL,
+   userID VARCHAR(20) NOT NULL PRIMARY KEY,
+   name VARCHAR(20) NULL,
    pwd VARCHAR(20) NOT NULL,
-   phone VARCHAR(20) NOT NULL,
-   address VARCHAR(50) NOT NULL,
-   email VARCHAR(50) NOT NULL,
-   role VARCHAR(20) NOT NULL,
-   description LONGTEXT NULL,
-   PRIMARY KEY (userID)
-);  
+   phone VARCHAR(20) NULL,
+   address VARCHAR(50) NULL,
+   email VARCHAR(50) NULL,
+   role VARCHAR(20) NULL,
+   description LONGTEXT NULL
+);
 
 #팀원소개 테이블 생성
 CREATE TABLE intro (
@@ -132,9 +37,11 @@ CREATE TABLE institution_donation (
      modified_at DATE NULL, 
      institution VARCHAR(50) NULL,
      donation_state BOOLEAN NULL,
-     book_status VARCHAR(20) NULL
+     book_status VARCHAR(20) NULL,
+     FOREIGN KEY (userID) REFERENCES userdb(userID),
+     INDEX userID (userID),
      );
-     
+ 
 #개인 기부 게시판 테이블 생성
 CREATE TABLE personal_donation (
 	personal_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -144,26 +51,36 @@ CREATE TABLE personal_donation (
 	created_at DATE NULL,
 	modified_at DATE NULL,
 	donation_state BOOLEAN NULL,
-	book_status VARCHAR(10) NULL
-	#,FOREIGN KEY (userID) REFERENCES User(userID)
+	book_status VARCHAR(10) NULL,
+	FOREIGN KEY (userID) REFERENCES userdb(userID),
+	INDEX userID (userID)
 );
 
 #개인기부 댓글 게시판 생성
 CREATE TABLE personal_comment (
-	comment_ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-	personal_donation_ID INT(11) NOT NULL,
-	userID VARCHAR(20) NOT NULL,
-	created_at DATE NOT NULL,
-	modified_at DATE NOT NULL,
-	PRIMARY KEY (comment_ID),
-	CONSTRAINT personal_comment FOREIGN KEY (userID) REFERENCES userdb (userID)
+	comment_ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	personal_donation_ID INT NOT NULL,
+	userID VARCHAR(20) NULL,
+	created_at DATE NULL,
+	modified_at DATE NULL,
+	FOREIGN KEY (userID) REFERENCES userdb(userID),
+	FOREIGN KEY (personal_donation_ID) REFERENCES personal_donation(personal_donation_id),
+	INDEX personal_comment (userID),
+   INDEX personal_donation_ID (personal_donation_ID)
 );
 
-
-
-#데이터 삽입
-insert into personal_donation(userID,title,content,donation_state) values('id1','개인기부합니다~~!','content1',true);
-insert into institution_donation(userID,title,content,donation_state) values('id2','기관기부합니다~~!','content1',true);
+#임시 데이터 삽입
+insert into userdb(userID,pwd) values('id','1234');
+insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!1','content1',true);
+insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!2','content2',true);
+insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!3','content3',true);
+insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!1','content1',true);
+insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!2','content2',true);
+insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!3','content3',true);
+insert into intro(studentID, name, department, school) values('20191001','고민채','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191003','김민재','정보시스템공학과','성신여자대학교');
+insert into intro(studentID, name, department, school) values('20191014','남소희','정보시스템공학과','성신여자대학교');
+insert into intro(studentID, name, department, school) values('20191024','양지원','정보시스템공학과','성신여자대학교');
+insert into intro(studentID, name, department, school) values('20191039','최소원','정보시스템공학과','성신여자대학교');
 
-select * from personal_donation
+select * from personal_donation;
