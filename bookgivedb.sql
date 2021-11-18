@@ -6,6 +6,100 @@ collate utf8_general_ci;
 #데이터베이스 사용
 use bookgivedb;
 
+
+#사용자 테이블 생성
+CREATE TABLE `userdb` (
+   `userID` VARCHAR(20) NOT NULL,
+   `name` VARCHAR(20) NULL DEFAULT NULL,
+   `pwd` VARCHAR(20) NULL DEFAULT NULL,
+   `phone` VARCHAR(20) NULL DEFAULT NULL,
+   `address` VARCHAR(50) NULL DEFAULT NULL,
+   `email` VARCHAR(50) NULL DEFAULT NULL,
+   `role` VARCHAR(20) NULL DEFAULT NULL,
+   `description` LONGTEXT NULL,
+   PRIMARY KEY (`userID`)
+)
+
+ENGINE=InnoDB
+;
+
+
+CREATE TABLE `personal_donation` (
+   `personal_donation_id` INT(11) NOT NULL AUTO_INCREMENT,
+   `userID` VARCHAR(20) NULL DEFAULT NULL,
+   `title` VARCHAR(50) NULL DEFAULT NULL,
+   `content` LONGTEXT NULL,
+   `created_at` DATE NULL DEFAULT NULL,
+   `modified_at` DATE NULL DEFAULT NULL,
+   `donation_state` TINYINT(1) NULL DEFAULT NULL,
+   `book_status` VARCHAR(10) NULL DEFAULT NULL,
+   PRIMARY KEY (`personal_donation_id`),
+   INDEX `userID` (`userID`),
+   CONSTRAINT `personal_donation_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
+)
+
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
+
+
+#개인기부 댓글 게시판 생성
+CREATE TABLE `personal_comment` (
+   `comment_ID` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+   `personal_donation_ID` INT(11) NULL DEFAULT NULL,
+   `userID` VARCHAR(20) NULL DEFAULT NULL,
+   `created_at` DATE NULL DEFAULT NULL,
+   `modified_at` DATE NULL DEFAULT NULL,
+   PRIMARY KEY (`comment_ID`),
+   INDEX `personal_comment` (`userID`),
+   INDEX `personal_donation_ID` (`personal_donation_ID`),
+   CONSTRAINT `personal_comment` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`),
+   CONSTRAINT `personal_comment_ibfk_1` FOREIGN KEY (`personal_donation_ID`) REFERENCES `personal_donation` (`personal_donation_id`)
+)
+
+ENGINE=InnoDB
+;
+
+#기관 기부 게시판 테이블 생성
+CREATE TABLE `institution_donation` (
+   `institution_donation_id` INT(11) NOT NULL AUTO_INCREMENT,
+   `userID` VARCHAR(20) NULL DEFAULT NULL,
+   `title` VARCHAR(50) NULL DEFAULT NULL,
+   `content` LONGTEXT NULL,
+   `img` LONGTEXT NULL,
+   `created_at` DATE NULL DEFAULT NULL,
+   `modified_at` DATE NULL DEFAULT NULL,
+   `institution` VARCHAR(50) NULL DEFAULT NULL,
+   `donation_state` TINYINT(1) NULL DEFAULT NULL,
+   `book_status` VARCHAR(20) NULL DEFAULT NULL,
+   PRIMARY KEY (`institution_donation_id`),
+   INDEX `userID` (`userID`),
+   CONSTRAINT `institution_donation_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `userdb` (`userID`)
+)
+
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
+
+#팀원소개 테이블 생성
+CREATE TABLE `intro` (
+   `studentID` INT(11) NOT NULL,
+   `name` VARCHAR(30) NULL DEFAULT NULL,
+   `department` VARCHAR(30) NULL DEFAULT NULL,
+   `school` VARCHAR(30) NULL DEFAULT NULL,
+   PRIMARY KEY (`studentID`)
+)
+
+ENGINE=InnoDB
+;
+
+
+
+
+# 수정 전  
+
+
+
 #사용자 테이블 생성
 CREATE TABLE userdb (
    userID VARCHAR(20) NOT NULL,
