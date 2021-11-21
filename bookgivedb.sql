@@ -70,7 +70,7 @@ CREATE TABLE personal_comment (
 );
 
 #임시 데이터 삽입
-insert into userdb(userID,pwd) values('id','1234');
+insert into userdb(userID,pwd,name) values('id','1234',"김민재");
 insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!1','content1',true);
 insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!2','content2',true);
 insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!3','content3',true);
