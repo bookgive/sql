@@ -1,5 +1,5 @@
 #데이터베이스 삭제
-drop database bookgivedb;
+drop database IF EXISTS bookgivedb;
 #데이터베이스 생성
 create database bookgivedb
 collate utf8_general_ci;
@@ -14,6 +14,7 @@ CREATE TABLE userdb (
    phone VARCHAR(20) NULL,
    address VARCHAR(50) NULL,
    email VARCHAR(50) NULL,
+   zipcode char(5) NULL,
    role VARCHAR(20) NULL,
    description LONGTEXT NULL
 );
@@ -67,6 +68,13 @@ CREATE TABLE personal_comment (
 	FOREIGN KEY (personal_donation_ID) REFERENCES personal_donation(personal_donation_id),
 	INDEX personal_comment (userID),
    INDEX personal_donation_ID (personal_donation_ID)
+);
+
+CREATE TABLE `tblZipcode` (
+  `zipcode` char(5) NOT NULL,
+  `area1` char(10) DEFAULT NULL,
+  `area2` char(20) DEFAULT NULL,
+  `area3` char(30) DEFAULT NULL
 );
 
 #임시 데이터 삽입
