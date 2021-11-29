@@ -31,7 +31,7 @@ CREATE TABLE intro (
 CREATE TABLE institution_donation (
      institution_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
      userID VARCHAR(20) NULL,
-     title VARCHAR(50) NULL, 
+     title VARCHAR(50) NULL,
      content LONGTEXT NULL,
      img LONGTEXT NULL,
      created_at DATE NULL,
@@ -39,6 +39,13 @@ CREATE TABLE institution_donation (
      institution VARCHAR(50) NULL,
      donation_state BOOLEAN NULL,
      book_status VARCHAR(20) NULL,
+     pos smallint(7) unsigned,
+     ref smallint(7),
+     depth smallint(7) unsigned,
+     pass varchar(15),
+     count smallint(7) unsigned,
+     filename varchar(30),
+     filesize int(11),
      FOREIGN KEY (userID) REFERENCES userdb(userID),
      INDEX userID (userID)
      );
