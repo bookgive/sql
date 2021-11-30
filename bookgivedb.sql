@@ -54,12 +54,15 @@ CREATE TABLE institution_donation (
 CREATE TABLE personal_donation (
 	personal_donation_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	userID VARCHAR(20) NULL,
+	pwd VARCHAR(20) NULL,
 	title VARCHAR(50) NULL,
 	content LONGTEXT NULL,
 	created_at DATE NULL,
-	modified_at DATE NULL,
 	donation_state BOOLEAN NULL,
 	book_status VARCHAR(10) NULL,
+	count 	int(11) NULL,
+	filename varchar(30),
+     	filesize int(11),
 	FOREIGN KEY (userID) REFERENCES userdb(userID),
 	INDEX userID (userID)
 );
