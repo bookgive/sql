@@ -59,7 +59,7 @@ CREATE TABLE personal_donation (
 	content LONGTEXT NULL,
 	pos smallint(7) unsigned,
 	ref smallint(7),
-	depth smallint(7) unsigned,
+     	depth smallint(7) unsigned,
 	created_at DATE NULL,
 	donation_state BOOLEAN NULL,
 	book_status VARCHAR(10) NULL,
