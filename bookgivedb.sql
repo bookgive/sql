@@ -57,6 +57,9 @@ CREATE TABLE personal_donation (
 	pwd VARCHAR(20) NULL,
 	title VARCHAR(50) NULL,
 	content LONGTEXT NULL,
+	pos smallint(7) unsigned,
+	ref smallint(7),
+	depth smallint(7) unsigned,
 	created_at DATE NULL,
 	donation_state BOOLEAN NULL,
 	book_status VARCHAR(10) NULL,
@@ -67,18 +70,7 @@ CREATE TABLE personal_donation (
 	INDEX userID (userID)
 );
 
-#개인기부 댓글 게시판 생성
-CREATE TABLE personal_comment (
-	comment_ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	personal_donation_ID INT NOT NULL,
-	userID VARCHAR(20) NULL,
-	created_at DATE NULL,
-	modified_at DATE NULL,
-	FOREIGN KEY (userID) REFERENCES userdb(userID),
-	FOREIGN KEY (personal_donation_ID) REFERENCES personal_donation(personal_donation_id),
-	INDEX personal_comment (userID),
-   INDEX personal_donation_ID (personal_donation_ID)
-);
+
 
 CREATE TABLE `tblZipcode` (
   `zipcode` char(5) NOT NULL,
