@@ -84,17 +84,17 @@ insert into userdb(userID,pwd) values('sohee','1234');
 insert into userdb(userID,pwd) values('jiwon','1234');
 insert into userdb(userID,pwd) values('sowon','1234');
 
-insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('minchae','어린왕자','기부합니다~!','2021-10-28',true,'좋음',1234);
-insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'좋음',1234);
-insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',true,'좋음',1234);
-insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'좋음',1234);
-insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('sowon','노인과바다','기부합니다~!','2021-11-28',true,'좋음',1234);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd,count,pos,depth,ref) values('minchae','어린왕자','기부합니다~!','2021-10-28',false,'good',1234,0,0,0,1);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd,count,pos,depth,ref) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'bad',1234,0,0,0,2);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd,count,pos,depth,ref) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',false,'soso',1234,0,0,0,3);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd,count,pos,depth,ref) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'good',1234,0,0,0,4);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd,count,pos,depth,ref) values('sowon','노인과바다','기부합니다~!','2021-11-28',false,'bad',1234,0,0,0,5);
 
-insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('minchae','어린왕자','기부합니다~!','2021-10-28',true,'좋음',1234);
-insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'좋음',1234);
-insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',true,'좋음',1234);
-insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'좋음',1234);
-insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('sowon','노인과바다','기부합니다~!','2021-11-28',true,'좋음',1234);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass,count,pos,depth,ref) values('minchae','어린왕자','기부합니다~!','2021-10-28',false,'good',1234,0,0,0,1);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass,count,pos,depth,ref) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'bad',1234,0,0,0,2);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass,count,pos,depth,ref) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',false,'soso',1234,0,0,0,3);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass,count,pos,depth,ref) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'good',1234,0,0,0,4);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass,count,pos,depth,ref) values('sowon','노인과바다','기부합니다~!','2021-11-28',false,'bad',1234,0,0,0,5);
 
 insert into intro(studentID, name, department, school) values('20191001','고민채','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191003','김민재','정보시스템공학과','성신여자대학교');
