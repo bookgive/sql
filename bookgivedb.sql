@@ -33,10 +33,7 @@ CREATE TABLE institution_donation (
      userID VARCHAR(20) NULL,
      title VARCHAR(50) NULL,
      content LONGTEXT NULL,
-     img LONGTEXT NULL,
      created_at DATE NULL,
-     modified_at DATE NULL, 
-     institution VARCHAR(50) NULL,
      donation_state BOOLEAN NULL,
      book_status VARCHAR(20) NULL,
      pos smallint(7) unsigned,
@@ -80,17 +77,38 @@ CREATE TABLE `tblZipcode` (
 );
 
 #임시 데이터 삽입
-insert into userdb(userID,pwd,name) values('id','1234',"김민재");
-insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!1','content1',true);
-insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!2','content2',true);
-insert into personal_donation(userID,title,content,donation_state) values('id','개인기부합니다~~!3','content3',true);
-insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!1','content1',true);
-insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!2','content2',true);
-insert into institution_donation(userID,title,content,donation_state) values('id','기관기부합니다~~!3','content3',true);
+insert into userdb(userID,pwd) values('id','1234');
+insert into userdb(userID,pwd) values('minchae','1234');
+insert into userdb(userID,pwd) values('minjae','1234');
+insert into userdb(userID,pwd) values('sohee','1234');
+insert into userdb(userID,pwd) values('jiwon','1234');
+insert into userdb(userID,pwd) values('sowon','1234');
+
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('minchae','어린왕자','기부합니다~!','2021-10-28',true,'좋음',1234);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'좋음',1234);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',true,'좋음',1234);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'좋음',1234);
+insert into personal_donation(userID,title,content,created_at,donation_state,book_status,pwd) values('sowon','노인과바다','기부합니다~!','2021-11-28',true,'좋음',1234);
+
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('minchae','어린왕자','기부합니다~!','2021-10-28',true,'좋음',1234);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('minjae','해리포터 시리즈','기부합니다~!','2021-11-02',true,'좋음',1234);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('sohee','달러구트 꿈 백화점','기부합니다~!','2021-11-02',true,'좋음',1234);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('jiwon','나의 라임오렌지 나무','기부합니다~!','2021-11-14',true,'좋음',1234);
+insert into institution_donation(userID,title,content,created_at,donation_state,book_status,pass) values('sowon','노인과바다','기부합니다~!','2021-11-28',true,'좋음',1234);
+
 insert into intro(studentID, name, department, school) values('20191001','고민채','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191003','김민재','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191014','남소희','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191024','양지원','정보시스템공학과','성신여자대학교');
 insert into intro(studentID, name, department, school) values('20191039','최소원','정보시스템공학과','성신여자대학교');
 
-select * from personal_donation;
+insert tblZipcode values ('06267','서울특별시','강남구','강남대로 238 ~ 246                ');
+insert tblZipcode values ('06266','서울특별시','강남구','강남대로 248 ~ 256                ');
+insert tblZipcode values ('06265','서울특별시','강남구','강남대로 262 ~ 276			');
+insert tblZipcode values ('06258','서울특별시','강남구','강남대로 278 ~ 292			');
+insert tblZipcode values ('06253','서울특별시','강남구','강남대로 298 ~ 318			');
+insert tblZipcode values ('06252','서울특별시','강남구','강남대로 320 ~ 334			');
+insert tblZipcode values ('06242','서울특별시','강남구','강남대로 338 ~ 354			');
+insert tblZipcode values ('06241','서울특별시','강남구','강남대로 358 ~ 374			');
+insert tblZipcode values ('06232','서울특별시','강남구','강남대로 376 ~ 390			');
+insert tblZipcode values ('06232','서울특별시','강남구','강남대로 396				');
